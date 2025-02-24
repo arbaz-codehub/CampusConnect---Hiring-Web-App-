@@ -10,7 +10,7 @@ export default function Home() {
           className="mt-4 px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-700 transition duration-300"
           onClick={() => signIn()}
         >
-          Join
+          Join CampusConnect
         </button>
       </div>
     </section>
