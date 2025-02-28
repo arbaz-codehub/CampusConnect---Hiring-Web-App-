@@ -6,6 +6,7 @@ import Button2 from "../Button2";
 import { useEffect } from "react";
 import { TextReveal } from "@/components/magicui/text-reveal";
 import Image from "next/image";
+import CountUp from "@/blocks/TextAnimations/CountUp/CountUp";
 
 export default function HeroSection() {
   useEffect(() => {
@@ -14,7 +15,8 @@ export default function HeroSection() {
       duration: 1000,
       // easing: "ease-in-out",
       once: false,
-      mirror: false,
+      mirror: true,
+      easing: "ease-in-out",
     });
   }, []);
 
@@ -26,6 +28,7 @@ export default function HeroSection() {
       color2: "#5fb088",
       color1: "#a8f68f",
       height: "100%",
+      direction: "fade-right",
     },
     {
       name: "Queen Raturly",
@@ -34,6 +37,7 @@ export default function HeroSection() {
       color2: "#4d9566",
       color1: "#5fb088",
       height: "90%",
+      direction: "fade-right",
     },
     {
       name: "Wanderson James",
@@ -42,6 +46,7 @@ export default function HeroSection() {
       color2: "#4d9566",
       color1: "#5fb088",
       height: "90%",
+      direction: "fade-left",
     },
     {
       name: "Sabrina Uliyana",
@@ -50,6 +55,7 @@ export default function HeroSection() {
       color2: "#5fb088",
       color1: "#a8f68f",
       height: "100%",
+      direction: "fade-left",
     },
   ];
   return (
@@ -72,20 +78,21 @@ export default function HeroSection() {
         <nav
           className="absolute z-10 top-0 w-screen h-20 flex justify-between items-center px-7"
           data-aos="fade-down"
-          data-aos-delay="3000"
+          data-aos-delay="2000"
+          data-aos-mirror="false"
         >
           {/* <Image src="/CC.png" width={100} height={10} alt="Logo" /> */}
           <div
-            className="h-9 min-w-44 "
+            className="h-9 min-w-44"
             style={{
-              backgroundImage: `url("/CC.png")`,
+              backgroundImage: `url("/Campus_connect_white.svg")`,
               backgroundSize: "100% 100%",
             }}
           ></div>
           <Button1>Join Us</Button1>
         </nav>
         {/* Dark Overlay for better readability */}
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div className="absolute inset-0 bg-black  bg-opacity-30"></div>
 
         {/* Content Box */}
         <div className="relative z-10 text-center h-1/2 flex flex-col justify-center items-center gap-20">
@@ -103,7 +110,8 @@ export default function HeroSection() {
             </h1>
             <p
               data-aos="zoom-in"
-              data-aos-delay="2000"
+              data-aos-delay="1500"
+              data-aos-mirror="false"
               className="text-white text-2xl mt-4 opacity-90 font-light font-poppins tracking-widest"
             >
               Connecting students with top companies through smart matchmaking.
@@ -111,32 +119,56 @@ export default function HeroSection() {
           </div>
           <div
             data-aos="fade-up"
-            data-aos-delay="3000"
+            data-aos-delay="2000"
+            data-aos-mirror="false"
             className="flex justify-center items-center flex-col gap-16"
           >
             <Button2>Get Started</Button2>
 
             <h2 className="text-white text-2xl opacity-90 font-bold mr-8">
               <span className="mr-2.5">
-                <span className="text-[#a8f68f]">10,000+ </span>
+                <span className="text-[#a8f68f]">
+                  <CountUp
+                    from={997}
+                    to={1000}
+                    separator=","
+                    direction="up"
+                    duration={1}
+                    className="count-up-text"
+                    delay={3}
+                  />
+                  +{" "}
+                </span>
                 Students Registered
               </span>
               <span> | </span>
               <span className="ml-2.5">
-                <span className="text-[#a8f68f]">500+</span> Companies Hiring
+                <span className="text-[#a8f68f]">
+                  <CountUp
+                    from={497}
+                    to={500}
+                    separator=","
+                    direction="up"
+                    duration={1}
+                    className="count-up-text"
+                    delay={3}
+                  />
+                  +{" "}
+                </span>
+                Companies Hiring
               </span>
             </h2>
           </div>
         </div>
       </section>
 
-      <section className="h-screen flex flex-col items-center justify-center bg-white">
+      <section className="h-screen flex flex-col items-center justify-center bg-gray-50">
         <div
           className="flex flex-col items-center justify-center"
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          <h2 className="text-5xl font-bold text-center text-gray-900 mb-2 mt-10">
+          <h2 className="text-5xl font-bold font-playflair text-center text-gray-900 mb-2 mt-10">
             Find the best candidates for your company
           </h2>
           <p className="text-gray-600 text-center mb-10 max-w-3xl text-xl">
@@ -157,8 +189,8 @@ export default function HeroSection() {
                 background: `linear-gradient(to bottom, ${member.color1}, ${member.color2})`,
                 height: `${member.height}`,
               }}
-              data-aos="fade-up"
-              data-aos-delay="300"
+              data-aos={`${member.direction}`}
+              data-aos-delay="500"
             >
               <div className="">
                 <h3 className="text-lg font-semibold text-gray-950">
@@ -178,10 +210,7 @@ export default function HeroSection() {
         </div>
       </section>
 
-      <section className="m-s3 h-screen">
-        <div className="h-1/2 bg-blue-100"></div>
-        <div className="h-1/2 bg-green-100"></div>
-      </section>
+      <section className="m-s3 h-screen"></section>
 
       <section className="m-s2">
         <TextReveal className="text-left">
