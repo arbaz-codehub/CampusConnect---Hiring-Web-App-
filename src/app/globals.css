@@ -71,6 +71,10 @@ button {
   border-radius: 10px;
   background-color: lightgreen;
   align-self: center;
+  transition: all 0.3s;
+}
+button:hover {
+  background-color: rgba(144, 238, 144, 0.605);
 }
 
 .social-btns {
