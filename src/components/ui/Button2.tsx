@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { signIn } from "next-auth/react";
 
 interface Button1Props {
   children: React.ReactNode;
@@ -8,7 +9,7 @@ interface Button1Props {
 const Button2: React.FC<Button1Props> = ({ children }) => {
   return (
     <StyledWrapper>
-      <button> {children}</button>
+      <button onClick={() => signIn()}> {children}</button>
     </StyledWrapper>
   );
 };

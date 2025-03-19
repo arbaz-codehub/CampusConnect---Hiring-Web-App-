@@ -22,6 +22,7 @@
     "crypto-random-string": "^5.0.0",
     "cryptr": "^6.3.0",
     "framer-motion": "^12.4.7",
+    "lottie-react": "^2.4.1",
     "lucide-react": "^0.475.0",
     "mongoose": "^8.9.5",
     "motion": "^12.4.7",
