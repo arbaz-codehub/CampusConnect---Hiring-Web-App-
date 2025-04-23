@@ -6,6 +6,11 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useSprings, animated, SpringValue } from "@react-spring/web";
+import { HTMLAttributes } from "react";
+
+const AnimatedSpan = animated((props: HTMLAttributes<HTMLSpanElement>) => (
+  <span {...props} />
+));
 
 interface BlurTextProps {
   text?: string;
@@ -110,18 +115,20 @@ const BlurText: React.FC<BlurTextProps> = ({
 
   return (
     <p ref={ref} className={`blur-text ${className} flex flex-wrap`}>
-      {springs.map((props, index) => (
-        <animated.span
-          key={index}
-          style={props as any}
-          className="inline-block transition-transform will-change-[transform,filter,opacity]"
-        >
-          <>
-            {elements[index] === " " ? "\u00A0" : elements[index]}
-            {animateBy === "words" && index < elements.length - 1 && "\u00A0"}
-          </>
-        </animated.span>
-      ))}
+      {springs.map((props, index) => {
+        const element = elements[index] === " " ? "\u00A0" : elements[index];
+        const space =
+          animateBy === "words" && index < elements.length - 1 ? "\u00A0" : "";
+
+        return (
+          <AnimatedSpan
+            key={index}
+            style={props}
+            className="inline-block transition-transform will-change-[transform,filter,opacity]"
+            children={`${element}${space}`}
+          />
+        );
+      })}
     </p>
   );
 };
