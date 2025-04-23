@@ -8,6 +8,7 @@ import axios from "axios";
 import { signIn } from "next-auth/react";
 import Toast from "@/components/Toast";
 import animationData from "../../../../public/animations/login-animationn.json";
+import { Suspense } from "react";
 
 export default function Login() {
   const [authState, setAuthState] = useState({
@@ -62,7 +63,9 @@ export default function Login() {
 
   return (
     <section className="h-screen flex items-center justify-center bg-white">
-      <Toast />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Toast />
+      </Suspense>
       <div className="flex w-full max-w-6xl bg-white rounded-lg shadow-2xl overflow-hidden h-[90%] mx-4">
         {/* Left Side - Lottie Animation */}
         <div className="hidden md:flex md:w-1/2 items-center justify-center bg-gray-50">
