@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import Link from "next/link";
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import Toast from "@/components/Toast";
@@ -12,7 +12,7 @@ import Toast from "@/components/Toast";
 import animationData from "../../../../public/animations/login-animationn.json"; // Replace with your Lottie animation file
 
 export default function Login() {
-  const params = useSearchParams();
+  // const params = useSearchParams();
 
   const [authState, setAuthState] = useState({
     email: "",
