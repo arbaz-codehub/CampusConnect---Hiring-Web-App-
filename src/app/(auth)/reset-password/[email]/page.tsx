@@ -3,15 +3,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useParams } from "next/navigation";
 import Link from "next/link";
 
-export default function ResetPassword({
-  params,
-}: {
-  params: { email: string };
-}) {
+export default function ResetPassword() {
   const searchParam = useSearchParams();
+  const params = useParams();
+  const email = params?.email as string; // 👈 cast it to string
   const [authState, setAuthState] = useState({
     password: "",
     cpassword: "",
@@ -22,7 +20,7 @@ export default function ResetPassword({
     setLoading(true);
     axios
       .post("/api/auth/reset-password", {
-        email: params.email,
+        email: email,
         signature: searchParam.get("signature"),
         password: authState.password,
         password_confirmation: authState.cpassword,
