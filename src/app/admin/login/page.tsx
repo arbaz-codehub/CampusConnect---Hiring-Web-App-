@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Toast from "@/components/Toast";
+import { Suspense } from "react";
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -27,7 +28,9 @@ export default function AdminLogin() {
 
   return (
     <div className="h-screen w-screen flex justify-center items-center">
-      <Toast />
+      <Suspense fallback={null}>
+        <Toast />
+      </Suspense>
       <div className="w-[500] shadow-md rounded-lg p-5">
         <h1 className="text-2xl font-bold">Admin Login</h1>
         <p>Welcome Back Admin Bhaiii</p>
