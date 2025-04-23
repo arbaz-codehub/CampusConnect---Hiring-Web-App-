@@ -1,11 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import Lottie from "lottie-react";
 import animationData from "../../../../public/animations/login-animationn.json"; // Same Lottie animation as login.jsx
 
 export default function Register() {
